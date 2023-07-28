@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WingColorSwitcher : ColorSwitcher
+public class PropellerColorSwitcher : ColorSwitcher
 {
     public ModelSwitch modelSwitch;
-    public List<GameObject> wingListD0, wingListD1, wingListD2;
-    private List<List<GameObject>> wingLists = new List<List<GameObject>>();
+    public List<GameObject> propellerListD0, propellerListD1, propellerListD2;
+    private List<List<GameObject>> propellerLists = new List<List<GameObject>>();
 
     void Start()
     {
-        wingLists = new List<List<GameObject>>
+        propellerLists = new List<List<GameObject>>
 {
-            wingListD0,
-            wingListD1,
-            wingListD2
+            propellerListD0,
+            propellerListD1,
+            propellerListD2
 };
         modelSwitch = GameObject.Find("ModelManager").GetComponent<ModelSwitch>();
        
@@ -37,13 +37,13 @@ public class WingColorSwitcher : ColorSwitcher
     // Aktif dronenun materyalini deðiþtirecek olan metot
     public override void SetActiveMaterial(int materialIndex)
     {
-        List<GameObject> wing = wingLists[activeDroneIndex];
-        if (activeDroneIndex >= 0 && activeDroneIndex <= wing.Count)
+        List<GameObject> propeller = propellerLists[activeDroneIndex];
+        if (activeDroneIndex >= 0 && activeDroneIndex <= propeller.Count)
         {
 
-            for (int i = 0; i < wing.Count; i++)
+            for (int i = 0; i < propeller.Count; i++)
             {
-                Renderer renderer = wing[i].GetComponent<Renderer>();
+                Renderer renderer = propeller[i].GetComponent<Renderer>();
                 renderer.material = materials[materialIndex];
             }
 

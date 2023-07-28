@@ -12,7 +12,7 @@ public class CostSetter : MonoBehaviour
     public int costGuard = 0; // Baþlangýçta maliyeti 0 olarak ayarla
     public int costColour = 0; // Baþlangýçta maliyeti 0 olarak ayarla
 
-    public GameObject[] wingList, backWingList, guardList;
+    public GameObject[] propellerList, backpropellerList, guardList;
 
 
     public TextMeshProUGUI costText;
@@ -44,7 +44,7 @@ public class CostSetter : MonoBehaviour
     public int DroneCostCalc()
     {
 
-        foreach (GameObject item in wingList)
+        foreach (GameObject item in propellerList)
         {
             if (item.activeInHierarchy)
             {
@@ -62,7 +62,7 @@ public class CostSetter : MonoBehaviour
         }
         if (activeDroneIndex == 0)
         {
-            foreach (GameObject item in backWingList)
+            foreach (GameObject item in backpropellerList)
             {
                 if (item.activeInHierarchy)
                 {

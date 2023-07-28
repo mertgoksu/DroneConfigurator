@@ -37,11 +37,25 @@ public class BodyColorSwitch : ColorSwitcher
         {
             GameObject activeDrone = drones[activeDroneIndex];
             Renderer droneRenderer = activeDrone.GetComponent<Renderer>();
-         
+
             if (droneRenderer != null)
             {
-                droneRenderer.material= materials[materialIndex];
+                droneRenderer.material = materials[materialIndex];
             }
+            //#region
+            //Material[] material = droneRenderer.materials;
+            //if (droneRenderer != null)
+            //{
+            //    for (int i = 0; i < droneRenderer.materials.Length; i++)
+            //    {
+            //        Debug.Log(material[i].name);
+
+            //        material[1] = materials[materialIndex];
+            //    }
+
+            //}
+            //#endregion
+
         }
     }
 

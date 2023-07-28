@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WingSwitch : ObjectSwitcher
+public class PropellerSwitch : ObjectSwitcher
 {
     public ModelSwitch modelSwitch;
     [SerializeField]
-    private List<GameObject> wingsListD0, wingsListD1, wingsListD2;
-    private List<List<GameObject>> wingsLists = new List<List<GameObject>>();
+    private List<GameObject> propellersListD0, propellersListD1, propellersListD2;
+    private List<List<GameObject>> propellersLists = new List<List<GameObject>>();
 
 
     public int droneCurrentIndex;
     private void Start()
     {
-        wingsLists = new List<List<GameObject>>
+        propellersLists = new List<List<GameObject>>
 {
-    wingsListD0,
-    wingsListD1,
-    wingsListD2
+    propellersListD0,
+    propellersListD1,
+    propellersListD2
 };
         modelSwitch = GameObject.Find("ModelManager").GetComponent<ModelSwitch>();
         currentIndex = 0;
@@ -31,20 +31,20 @@ public class WingSwitch : ObjectSwitcher
     }
     public override void ChangeObject(int index)
     {
-        List<GameObject> wingsList = wingsLists[droneCurrentIndex];
+        List<GameObject> propellersList = propellersLists[droneCurrentIndex];
 
-        for (int i = 0; i < wingsList.Count; i++)
+        for (int i = 0; i < propellersList.Count; i++)
         {
-            GameObject wing = wingsList[i];
-            wing.SetActive(i == index);
+            GameObject propeller = propellersList[i];
+            propeller.SetActive(i == index);
         }
     }
 
     public override void ToRightChangerFuncButton()
     {
-        List<GameObject> wingsList = wingsLists[droneCurrentIndex];
+        List<GameObject> propellersList = propellersLists[droneCurrentIndex];
         currentIndex++;
-        if (currentIndex >= wingsList.Count)
+        if (currentIndex >= propellersList.Count)
         {
             currentIndex = 0;
         }
@@ -53,11 +53,11 @@ public class WingSwitch : ObjectSwitcher
 
     public override void ToLeftChangerFuncButton()
     {
-        List<GameObject> wingsList = wingsLists[droneCurrentIndex];
+        List<GameObject> propellersList = propellersLists[droneCurrentIndex];
         currentIndex--;
         if (currentIndex < 0)
         {
-            currentIndex = wingsList.Count-1;
+            currentIndex = propellersList.Count-1;
         }
         ChangeObject(currentIndex);
     }

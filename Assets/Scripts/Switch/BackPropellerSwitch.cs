@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackWingSwitch : ObjectSwitcher
+public class BackPropellerSwitch : ObjectSwitcher
 {
     public ModelSwitch modelSwitch;
     [SerializeField]
-    private List<GameObject> backWingList;
+    private List<GameObject> backpropellerList;
     public int currentIndexDrone;
     void Start()
     {
@@ -21,10 +21,10 @@ public class BackWingSwitch : ObjectSwitcher
 
     public override void ChangeObject(int index)
     {
-        for (int i = 0; i < backWingList.Count; i++)
+        for (int i = 0; i < backpropellerList.Count; i++)
         {
-            GameObject backWing = backWingList[i];
-            backWing.SetActive(i == index);
+            GameObject backpropeller = backpropellerList[i];
+            backpropeller.SetActive(i == index);
         }
     }
 
@@ -33,7 +33,7 @@ public class BackWingSwitch : ObjectSwitcher
         if (currentIndexDrone == 0)
         {
             currentIndex++;
-            if (currentIndex >= backWingList.Count)
+            if (currentIndex >= backpropellerList.Count)
                 currentIndex = 0;
             ChangeObject(currentIndex);
         }
@@ -47,7 +47,7 @@ public class BackWingSwitch : ObjectSwitcher
         {
             currentIndex--;
             if (currentIndex < 0)
-                currentIndex = backWingList.Count - 1;
+                currentIndex = backpropellerList.Count - 1;
             ChangeObject(currentIndex);
         }
     }

@@ -33,8 +33,8 @@ public class GuardSwitch : ObjectSwitcher
 
         for (int i = 0; i < guardList.Count; i++)
         {
-            GameObject wing = guardList[i];
-            wing.SetActive(i == index);
+            GameObject guard = guardList[i];
+            guard.SetActive(i == index);
         }
     }
 
@@ -42,7 +42,7 @@ public class GuardSwitch : ObjectSwitcher
     {
         List<GameObject> guardList = guardLists[droneCurrentIndex];
         currentIndex++;
-        if (currentIndex >= guardLists.Count)
+        if (currentIndex >= guardList.Count)
         {
             currentIndex = 0;
         }
@@ -55,7 +55,7 @@ public class GuardSwitch : ObjectSwitcher
         currentIndex--;
         if (currentIndex < 0)
         {
-            currentIndex = guardLists.Count - 1;
+            currentIndex = guardList.Count - 1;
         }
         ChangeObject(currentIndex);
     }
